@@ -3,9 +3,9 @@ Neutron Helm Chart 구조 파악
 ==================================
 
 `openstack-helm <https://opendev.org/openstack/openstack-helm>`_ 의 neutron
-chart 는 오픈스택 네트워킹 서비스를 쿠버네티스 위에 배포하는 헬름 차트다.
+chart 는 OpenStack 네트워킹 서비스를 Kubernetes 위에 배포하는 Helm chart 다.
 이 문서는 `차트 디렉터리 <https://github.com/openstack/openstack-helm/tree/master/neutron>`_
-의 파일 구성과 각 항목이 실제 쿠버네티스 리소스로 어떻게 구현되는지를 정리한다.
+의 파일 구성과 각 항목이 실제 Kubernetes 리소스로 어떻게 구현되는지를 정리한다.
 
 
 차트 최상위 파일
@@ -17,12 +17,12 @@ chart 는 오픈스택 네트워킹 서비스를 쿠버네티스 위에 배포�
    ├── Chart.yaml        # 차트 메타데이터
    ├── values.yaml       # 기본값 정의
    ├── requirements.yaml # 의존 차트 선언
-   └── templates/        # 쿠버네티스 리소스 템플릿
+   └── templates/        # Kubernetes 리소스 템플릿
 
 **Chart.yaml** 은 차트 이름, 버전(``2026.1.0``), appVersion(``28.0.0``)을 선언하며,
 ``helm-toolkit`` 을 라이브러리 의존성으로 등록한다.
 helm-toolkit 은 openstack-helm 전체에서 공통 스니펫(snippet)을 제공하는 내부 라이브러리
-차트로, 실제 쿠버네티스 리소스를 직접 생성하지는 않는다.
+차트로, 실제 Kubernetes 리소스를 직접 생성하지는 않는다.
 
 **values.yaml** 은 배포 시 오버라이드할 수 있는 기본값 전체를 담는다.
 주요 최상위 블록은 아래 표와 같다.
@@ -58,7 +58,8 @@ templates/ 아래 파일들은 역할에 따라 다음과 같이 묶인다.
 ---------
 
 ``bin/`` 디렉터리에는 각 컴포넌트의 기동 스크립트가 ``_*.sh.tpl`` 형식으로
-들어 있다. Helm 이 렌더링하면 ``configmap-bin.yaml`` 에 의해
+들어 있다.
+Helm 이 렌더링하면 ``configmap-bin.yaml`` 에 의해
 단일 ConfigMap 으로 묶여 각 Pod 의 ``/tmp/`` 경로에 마운트된다.
 
 ``configmap-etc.yaml`` 은 ``values.yaml`` 의 ``conf`` 블록 값을
@@ -76,14 +77,14 @@ RabbitMQ transport URL, Keystone auth_url 등을 자동으로 채워 넣는다�
 워크로드 관련
 -------------
 
-컴포넌트의 역할에 따라 쿠버네티스 워크로드 타입이 다르게 선택된다.
+컴포넌트의 역할에 따라 Kubernetes 워크로드 타입이 다르게 선택된다.
 
 .. list-table::
    :header-rows: 1
    :widths: 35 20 45
 
    * - 템플릿 파일
-     - 쿠버네티스 리소스
+     - Kubernetes 리소스
      - 배포 이유
    * - ``deployment-server.yaml``
      - Deployment
@@ -123,7 +124,8 @@ RabbitMQ transport URL, Keystone auth_url 등을 자동으로 채워 넣는다�
      - 고아 네트워크 네임스페이스 정리 크론
 
 ``network.backend`` 값에 따라 OVS 관련 또는 OVN 관련 DaemonSet 이
-동적으로 활성화된다. 사용하지 않는 에이전트는 ``manifests`` 토글로
+동적으로 활성화된다.
+사용하지 않는 에이전트는 ``manifests`` 토글로
 리소스 자체가 생성되지 않는다.
 
 Job 관련
@@ -163,7 +165,7 @@ Job 관련
    :widths: 30 70
 
    * - 템플릿 파일
-     - 생성되는 쿠버네티스 리소스
+     - 생성되는 Kubernetes 리소스
    * - ``service-server.yaml``
      - ClusterIP Service (포트 9696) — neutron API 클러스터 내 노출
    * - ``secret-db.yaml`` / ``secret-rabbitmq.yaml`` / ``secret-keystone.yaml``
@@ -175,13 +177,13 @@ Job 관련
    * - ``certificates.yaml``
      - TLS 인증서 Secret (TLS 활성화 시)
    * - ``extra-manifests.yaml``
-     - ``values.yaml`` 의 ``manifests.extra`` 에 정의된 임의 쿠버네티스 리소스 주입
+     - ``values.yaml`` 의 ``manifests.extra`` 에 정의된 임의 Kubernetes 리소스 주입
 
 
 값 → 리소스 반영 흐름 요약
 ===========================
 
-아래는 ``helm install`` 시 values.yaml 의 값이 실제 쿠버네티스 리소스로 이어지는
+아래는 ``helm install`` 시 values.yaml 의 값이 실제 Kubernetes 리소스로 이어지는
 흐름이다.
 
 .. code-block:: text
