@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenStack & Kubernetes 한글 문서화 프로젝트 \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 11:37+0000\n"
+"POT-Creation-Date: 2026-08-10 13:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -976,6 +976,7 @@ msgstr ""
 #: ../../source/foundations/openstack-fundamentals.rst:17
 #: ../../source/kubernetes-on-openstack/concepts.rst:33
 #: ../../source/networking/load-balancing.rst:21
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:35
 #: ../../source/openstack-on-kubernetes/openstack-helm-network-outline.rst:106
 #: ../../source/openstack-on-kubernetes/openstack-helm-network-outline.rst:171
 #: ../../source/openstack-on-kubernetes/openstack-helm-network-outline.rst:251
@@ -1537,6 +1538,15 @@ msgid "D"
 msgstr ""
 
 #: ../../source/glossary.rst:71
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:99
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:102
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:105
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:108
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:111
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:114
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:117
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:120
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:123
 msgid "DaemonSet"
 msgstr ""
 
@@ -1545,6 +1555,9 @@ msgid "각 노드마다 하나씩 Pod 를 실행하는 Kubernetes 오브젝트. 
 msgstr ""
 
 #: ../../source/glossary.rst:75
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:90
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:93
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:96
 msgid "Deployment"
 msgstr ""
 
@@ -4194,7 +4207,7 @@ msgstr ""
 msgid "배포"
 msgstr ""
 
-#: ../../source/openstack-on-kubernetes/index.rst:38
+#: ../../source/openstack-on-kubernetes/index.rst:39
 msgid "운영"
 msgstr ""
 
@@ -4299,6 +4312,390 @@ msgstr ""
 
 #: ../../source/openstack-on-kubernetes/metallb.rst:25
 msgid "L2/BGP 모드 선택 기준과 주소 풀 예시 보강."
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:3
+msgid "Neutron Helm Chart 구조 파악"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:5
+msgid ""
+"`openstack-helm <https://opendev.org/openstack/openstack-helm>`_ 의 "
+"neutron chart 는 OpenStack 네트워킹 서비스를 Kubernetes 위에 배포하는 Helm chart 다. 이 "
+"문서는 `차트 디렉터리 <https://github.com/openstack/openstack-"
+"helm/tree/master/neutron>`_ 의 파일 구성과 각 항목이 실제 Kubernetes 리소스로 어떻게 구현되는지를 "
+"정리한다."
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:12
+msgid "차트 최상위 파일"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:22
+msgid ""
+"**Chart.yaml** 은 차트 이름, 버전(``2026.1.0``), appVersion(``28.0.0``)을 선언하며, "
+"``helm-toolkit`` 을 라이브러리 의존성으로 등록한다. helm-toolkit 은 openstack-helm 전체에서 "
+"공통 스니펫(snippet)을 제공하는 내부 라이브러리 차트로, 실제 Kubernetes 리소스를 직접 생성하지는 않는다."
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:27
+msgid "**values.yaml** 은 배포 시 오버라이드할 수 있는 기본값 전체를 담는다. 주요 최상위 블록은 아래 표와 같다."
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:34
+msgid "블록"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:36
+msgid "``images``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:37
+msgid "컴포넌트별 컨테이너 이미지 태그"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:38
+msgid "``labels``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:39
+msgid "각 Deployment/DaemonSet 의 ``nodeSelector`` 키값"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:40
+msgid "``network``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:41
+msgid "``backend`` 리스트로 ``openvswitch`` 또는 ``ovn`` 선택"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:42
+msgid "``conf``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:43
+msgid "``neutron.conf``, ``ml2_conf.ini`` 등 설정 파일 내용 (INI 형식)"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:44
+msgid "``endpoints``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:45
+msgid "Keystone/MariaDB/RabbitMQ 등 외부 서비스 URL 과 자격증명"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:46
+msgid "``dependencies``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:47
+msgid "각 컴포넌트의 기동 선행 조건 (Job 완료 여부, 서비스 Ready 여부)"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:48
+msgid "``manifests``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:49
+msgid "리소스별 ``true``/``false`` 토글 — 원하지 않는 컴포넌트를 비활성화"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:53
+msgid "templates/ 디렉터리 구성"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:55
+msgid "templates/ 아래 파일들은 역할에 따라 다음과 같이 묶인다."
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:58
+msgid "설정 관련"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:60
+msgid ""
+"``bin/`` 디렉터리에는 각 컴포넌트의 기동 스크립트가 ``_*.sh.tpl`` 형식으로 들어 있다. Helm 이 렌더링하면 "
+"``configmap-bin.yaml`` 에 의해 단일 ConfigMap 으로 묶여 각 Pod 의 ``/tmp/`` 경로에 "
+"마운트된다."
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:65
+msgid ""
+"``configmap-etc.yaml`` 은 ``values.yaml`` 의 ``conf`` 블록 값을 "
+"``neutron.conf``, ``ml2_conf.ini``, ``l3_agent.ini`` 등 설정 파일로 렌더링한다. 특이한 "
+"점은 이 템플릿 내부에서 ``endpoints`` 블록을 참조해 DB 접속 URL, RabbitMQ transport URL, "
+"Keystone auth_url 등을 자동으로 채워 넣는다는 것이다."
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:78
+msgid "워크로드 관련"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:80
+msgid "컴포넌트의 역할에 따라 Kubernetes 워크로드 타입이 다르게 선택된다."
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:86
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:167
+msgid "템플릿 파일"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:87
+msgid "Kubernetes 리소스"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:88
+msgid "배포 이유"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:89
+msgid "``deployment-server.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:91
+msgid "API 서버는 노드 독립적/스테이트리스 → replicas 조정 가능"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:92
+msgid "``deployment-rpc_server.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:94
+msgid "RabbitMQ RPC 처리 전담. API 서버와 분리해 부하 격리"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:95
+msgid "``deployment-ironic-agent.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:97
+msgid "베어메탈 연동. 특정 노드가 아닌 임의 노드에서 실행 가능"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:98
+msgid "``daemonset-ovs-agent.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:100
+msgid "OVS 브리지/포트를 호스트마다 관리해야 하므로 노드 단위 배포"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:101
+msgid "``daemonset-ovn-agent.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:103
+msgid "OVN logical flow 동기화. 역시 노드 단위"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:104
+msgid "``daemonset-dhcp-agent.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:106
+msgid "dnsmasq 가 각 노드의 네트워크 네임스페이스에서 실행"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:107
+msgid "``daemonset-l3-agent.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:109
+msgid "가상 라우터/NAT/플로팅 IP 처리, 호스트 네트워크 네임스페이스 필요"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:110
+msgid "``daemonset-metadata-agent.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:112
+msgid "``169.254.169.254`` 메타데이터 프록시, 노드별 실행"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:113
+msgid "``daemonset-ovn-metadata-agent.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:115
+msgid "OVN 환경에서의 메타데이터 프록시"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:116
+msgid "``daemonset-sriov-agent.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:118
+msgid "SR-IOV VF 관리, 기본 비활성 (``manifests.daemonset_sriov_agent: false``)"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:119
+msgid "``daemonset-bagpipe-bgp.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:121
+msgid "BGP VPN 연동, 기본 비활성"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:122
+msgid "``daemonset-netns-cleanup-cron.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:124
+msgid "고아 네트워크 네임스페이스 정리 크론"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:126
+msgid ""
+"``network.backend`` 값에 따라 OVS 관련 또는 OVN 관련 DaemonSet 이 동적으로 활성화된다. 사용하지 "
+"않는 에이전트는 ``manifests`` 토글로 리소스 자체가 생성되지 않는다."
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:132
+msgid "Job 관련"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:134
+msgid ""
+"서비스 기동 전 일회성 작업은 Helm Hook(``post-install``, ``post-upgrade``)으로 등록된 Job "
+"으로 실행된다."
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:141
+msgid "Job 템플릿"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:142
+msgid "하는 일"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:143
+msgid "``job-db-init.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:144
+msgid "MariaDB 에 neutron DB/사용자 생성"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:145
+msgid "``job-db-sync.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:146
+msgid "``neutron-db-manage upgrade head`` 로 DB 스키마 마이그레이션"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:147
+msgid "``job-ks-user.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:148
+msgid "Keystone 에 neutron 서비스 계정 생성"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:149
+msgid "``job-ks-service.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:150
+msgid "Keystone 에 ``network`` 타입 서비스 등록"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:151
+msgid "``job-ks-endpoints.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:152
+msgid "Keystone 에 public/internal/admin 엔드포인트 URL 등록"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:153
+msgid "``job-rabbit-init.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:154
+msgid "RabbitMQ 에 vhost/사용자/권한 설정"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:155
+msgid "``job-bootstrap.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:156
+msgid "초기 네트워크 리소스 생성 (선택)"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:157
+msgid "``job-db-drop.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:158
+msgid "DB 삭제 (차트 제거 시, 기본 비활성)"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:161
+msgid "기타 리소스"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:168
+msgid "생성되는 Kubernetes 리소스"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:169
+msgid "``service-server.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:170
+msgid "ClusterIP Service (포트 9696) — neutron API 클러스터 내 노출"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:171
+msgid "``secret-db.yaml`` / ``secret-rabbitmq.yaml`` / ``secret-keystone.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:172
+msgid "각 서비스 자격증명을 담은 Secret"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:173
+msgid "``pdb-server.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:174
+msgid "PodDisruptionBudget — API 서버 롤링 업데이트 시 최소 가용 Pod 보장"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:175
+msgid "``network_policy.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:176
+msgid "NetworkPolicy — 인그레스/이그레스 제한"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:177
+msgid "``certificates.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:178
+msgid "TLS 인증서 Secret (TLS 활성화 시)"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:179
+msgid "``extra-manifests.yaml``"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:180
+msgid "``values.yaml`` 의 ``manifests.extra`` 에 정의된 임의 Kubernetes 리소스 주입"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:184
+msgid "값 → 리소스 반영 흐름 요약"
+msgstr ""
+
+#: ../../source/openstack-on-kubernetes/neutron-helm-chart.rst:186
+msgid "아래는 ``helm install`` 시 values.yaml 의 값이 실제 Kubernetes 리소스로 이어지는 흐름이다."
 msgstr ""
 
 #: ../../source/openstack-on-kubernetes/openstack-helm.rst:5
