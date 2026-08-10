@@ -32,6 +32,7 @@ openstack-helm 을 중심으로 준비부터 운영까지 짚습니다.
    :caption: 배포
 
    openstack-helm
+   neutron-helm-chart
    kolla
    comparison
 
