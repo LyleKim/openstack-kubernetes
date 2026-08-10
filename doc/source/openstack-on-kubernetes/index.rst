@@ -22,6 +22,7 @@ openstack-helm 을 중심으로 준비부터 운영까지 짚습니다.
    :maxdepth: 1
    :caption: K8s 네트워킹 준비
 
+   openstack-helm-network-outline
    cni-and-neutron
    gateway-api
    metallb
