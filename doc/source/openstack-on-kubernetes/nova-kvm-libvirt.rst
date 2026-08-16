@@ -53,9 +53,9 @@ libvirtd 가 QEMU 프로세스를 생성하는 과정
 
 libvirtd 는 fork 와 exec 로 QEMU 프로세스를 만들며, 그 과정에서
 cgroup 배치,
-VM 간 이미지 접근을 차단하는 디스크 라벨링,
+VM 간 이미지 접근을 차단하는 디스크 라벨링(sVirt),
 QEMU 프로세스의 /dev 를 호스트와 분리해
-해당 VM 에 필요한 장치 파일만 노출하는 마운트 네임스페이스를 수행하여
+해당 VM 에 필요한 장치 파일만 노출하는 마운트 네임스페이스(Mount Namespace)를 수행하여
 QEMU의 권한을 root 에서 ``libvirt-qemu`` 로 제한합니다.
 
 이 시점에서 호스트에는 cgroup 과 보안 레이블이 걸린 QEMU
@@ -151,7 +151,7 @@ KVM 과 QEMU 는 정상적인 I/O 요청만 처리하고, 허용되지 않은 �
 내부의 에러(Page Fault 등)로 되돌려 호스트를 보호합니다.
 
 두 번째는 **호스트 OS 수준의 격리** 입니다. QEMU 프로세스 자체에도 파일 접근
-제한(sVirt), 마운트 공간 격리(Mount Namespace), 시스템 콜 제한(Seccomp),
+제한(sVirt), 마운트 네임스페이스, 시스템 콜 제한(Seccomp),
 자원 점유 제한(cgroup)을 겹쳐 걸어 둡니다. QEMU 프로세스가 침해되더라도
 피해가 호스트 전체로 번지지 않도록 합니다.
 
@@ -268,7 +268,7 @@ Openstack on Kubernetes에서 libvirtd 가 QEMU 를 생성할 때는 베어메�
 * **부모 프로세스가 libvirtd 가 아니다.** libvirtd 는 QEMU 를 double fork해서 띄웁니다.
   목적은 **libvirtd 가 재시작, 크래시해도 실행
   중인 VM 이 함께 죽지 않게** 하는 것입니다. double fork 과정에서 중간 프로세스가
-  종료되면서 QEMU 는 고아 프로세스가 되고, 가장 가까운 서브리퍼가 새로운 부모 프로세스가 됩니다.
+  종료되면서 QEMU 는 고아 프로세스가 되고, 가장 가까운 서브리퍼(subreaper)가 새로운 부모 프로세스가 됩니다.
   libvirt Pod 안에서 그 서브리퍼가 ``containerd-shim`` 로 관측됩니다.
   이는 베어메탈과는 다르게 적용되는 점입니다.( 베어메탈에서는 systemd 가 QEMU 의 부모 프로세스입니다.)
 
