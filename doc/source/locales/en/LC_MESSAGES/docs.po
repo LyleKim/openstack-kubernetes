@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenStack & Kubernetes 한글 문서화 프로젝트 \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 13:33+0000\n"
+"POT-Creation-Date: 2026-08-30 21:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -445,9 +445,9 @@ msgid "무엇을 잇나"
 msgstr ""
 
 #: ../../source/foundations/bridging-concepts.rst:29
-#: ../../source/foundations/bridging-concepts.rst:61
-#: ../../source/foundations/bridging-concepts.rst:86
-#: ../../source/foundations/bridging-concepts.rst:107
+#: ../../source/foundations/bridging-concepts.rst:63
+#: ../../source/foundations/bridging-concepts.rst:90
+#: ../../source/foundations/bridging-concepts.rst:111
 msgid "상세"
 msgstr ""
 
@@ -502,27 +502,27 @@ msgid ""
 "helm 을 비롯한 아래 여러 방식의 기반입니다."
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:51
+#: ../../source/foundations/bridging-concepts.rst:53
 msgid "배포·프로비저닝"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:53
+#: ../../source/foundations/bridging-concepts.rst:55
 msgid "두 기술을 결합하는 방법으로, 방향에 따라 나뉩니다."
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:59
-#: ../../source/foundations/bridging-concepts.rst:84
-#: ../../source/foundations/bridging-concepts.rst:105
+#: ../../source/foundations/bridging-concepts.rst:61
+#: ../../source/foundations/bridging-concepts.rst:88
+#: ../../source/foundations/bridging-concepts.rst:109
 msgid "이름"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:60
-#: ../../source/foundations/bridging-concepts.rst:85
-#: ../../source/foundations/bridging-concepts.rst:106
+#: ../../source/foundations/bridging-concepts.rst:62
+#: ../../source/foundations/bridging-concepts.rst:89
+#: ../../source/foundations/bridging-concepts.rst:110
 msgid "한 줄 정의"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:62
+#: ../../source/foundations/bridging-concepts.rst:64
 #: ../../source/foundations/openstack-fundamentals.rst:192
 #: ../../source/foundations/openstack-fundamentals.rst:209
 #: ../../source/glossary.rst:216
@@ -531,104 +531,102 @@ msgstr ""
 msgid "openstack-helm"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:63
+#: ../../source/foundations/bridging-concepts.rst:65
 msgid "OpenStack 을 K8s 에 배포 (OpenStack → K8s)"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:64
+#: ../../source/foundations/bridging-concepts.rst:66
 msgid ":doc:`../openstack-on-kubernetes/openstack-helm`"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:65
+#: ../../source/foundations/bridging-concepts.rst:67
 #: ../../source/glossary.rst:167
 #: ../../source/kubernetes-on-openstack/magnum.rst:3
 msgid "Magnum"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:66
+#: ../../source/foundations/bridging-concepts.rst:68
 msgid "OpenStack 이 K8s 클러스터를 생성 (K8s → OpenStack)"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:67
+#: ../../source/foundations/bridging-concepts.rst:69
 msgid ":doc:`../kubernetes-on-openstack/magnum`"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:68
+#: ../../source/foundations/bridging-concepts.rst:70
 #: ../../source/kubernetes-on-openstack/cluster-api.rst:3
 msgid "Cluster API (CAPO)"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:69
+#: ../../source/foundations/bridging-concepts.rst:71
 msgid "선언적으로 K8s 클러스터 프로비저닝 (K8s → OpenStack)"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:70
+#: ../../source/foundations/bridging-concepts.rst:72
 msgid ":doc:`../kubernetes-on-openstack/cluster-api`"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:74
+#: ../../source/foundations/bridging-concepts.rst:78
 msgid "베어메탈 (물리 서버)"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:76
+#: ../../source/foundations/bridging-concepts.rst:80
 msgid ""
 "멀티노드 운영은 결국 물리 서버로 내려갑니다. 여기서 K8s 의 Metal3 와 OpenStack 의 Ironic 이 만나는데, "
 "Metal3(CRD)가 내부적으로 Ironic 을 호출하는 구조라 두 스택의 베어메탈 관리가 한 지점으로 수렴합니다."
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:87
+#: ../../source/foundations/bridging-concepts.rst:91
 #: ../../source/glossary.rst:132
 msgid "Ironic"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:88
+#: ../../source/foundations/bridging-concepts.rst:92
 msgid "OpenStack 의 베어메탈 프로비저닝 서비스"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:89
-#: ../../source/foundations/bridging-concepts.rst:92
+#: ../../source/foundations/bridging-concepts.rst:93
+#: ../../source/foundations/bridging-concepts.rst:96
 msgid "전용 문서 예정"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:90
+#: ../../source/foundations/bridging-concepts.rst:94
 #: ../../source/glossary.rst:171
 msgid "Metal3"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:91
+#: ../../source/foundations/bridging-concepts.rst:95
 msgid "K8s(CRD)로 베어메탈 관리 — 내부적으로 Ironic 사용"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:96
+#: ../../source/foundations/bridging-concepts.rst:100
 msgid "공용 스토리지"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:98
+#: ../../source/foundations/bridging-concepts.rst:102
 msgid ""
 "두 스택이 같은 스토리지 백엔드(Ceph)를 공유하는 수렴 지점입니다. K8s 측은 Rook 오퍼레이터로, OpenStack 측은 "
 "Cinder·Glance 등이 같은 Ceph 를 바라봅니다."
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:108
+#: ../../source/foundations/bridging-concepts.rst:112
 msgid "Ceph / Rook"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:109
+#: ../../source/foundations/bridging-concepts.rst:113
 msgid "OpenStack·K8s 공용 스토리지 백엔드 (Rook = K8s 오퍼레이터)"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:110
+#: ../../source/foundations/bridging-concepts.rst:114
 msgid ":doc:`../storage/ceph`"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:112
+#: ../../source/foundations/bridging-concepts.rst:116
 #: ../../source/foundations/helm.rst:20 ../../source/foundations/helm.rst:29
 #: ../../source/foundations/helm.rst:39
 #: ../../source/foundations/kubernetes-fundamentals.rst:20
 #: ../../source/foundations/kubernetes-fundamentals.rst:31
 #: ../../source/foundations/kubernetes-fundamentals.rst:43
-#: ../../source/foundations/kubernetes-fundamentals.rst:53
-#: ../../source/foundations/kubernetes-fundamentals.rst:62
 #: ../../source/foundations/vm-vs-container.rst:13
 #: ../../source/foundations/vm-vs-container.rst:22
 #: ../../source/foundations/vm-vs-container.rst:34
@@ -664,11 +662,11 @@ msgstr ""
 msgid "할 일"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:114
+#: ../../source/foundations/bridging-concepts.rst:118
 msgid "Metal3/Ironic 전용 심화 문서 신설 여부 검토"
 msgstr ""
 
-#: ../../source/foundations/bridging-concepts.rst:115
+#: ../../source/foundations/bridging-concepts.rst:119
 msgid "통합 패턴 섹션이 바뀌면 이 지도의 링크·항목도 함께 갱신"
 msgstr ""
 
@@ -717,7 +715,7 @@ msgstr ""
 
 #: ../../source/foundations/helm.rst:37
 #: ../../source/foundations/kubernetes-csi.rst:70
-#: ../../source/foundations/kubernetes-fundamentals.rst:60
+#: ../../source/foundations/kubernetes-fundamentals.rst:136
 #: ../../source/foundations/openstack-fundamentals.rst:295
 #: ../../source/foundations/vm-vs-container.rst:32
 #: ../../source/kubernetes-on-openstack/cluster-api.rst:40
@@ -937,14 +935,116 @@ msgstr ""
 msgid "선언적 관리와 CRD"
 msgstr ""
 
-#: ../../source/foundations/kubernetes-fundamentals.rst:55
+#: ../../source/foundations/kubernetes-fundamentals.rst:53
 msgid ""
-"CRD / Operator → Magnum 드라이버, Metal3 ``BareMetalHost`` 등 통합 프로젝트의 기반 "
-"(:doc:`bridging-concepts`)"
+"Kubernetes에서는 원하는 상태(desired state)를 리소스에 선언하고, 컨트롤러(Controller)가 현재 "
+"상태(current state)와 비교하여 두 상태가 일치하도록 지속적으로 조정(reconciliation)합니다."
 msgstr ""
 
-#: ../../source/foundations/kubernetes-fundamentals.rst:64
-msgid "Kubernetes 공식 개념 문서(kubernetes.io/docs/concepts) 링크."
+#: ../../source/foundations/kubernetes-fundamentals.rst:57
+msgid ""
+"OpenStack과 Kubernetes를 연동하는 일부 프로젝트에서는 이러한 선언적 관리 방식을 사용하여 OpenStack API로"
+" 관리되는 인프라의 원하는 상태를 Kubernetes 리소스로 표현합니다."
+msgstr ""
+
+#: ../../source/foundations/kubernetes-fundamentals.rst:61
+msgid ""
+"이때 사용자 정의 리소스 정의(CustomResourceDefinition, :term:`CRD`)는 Kubernetes 기본 "
+"리소스로 표현하기 어려운 OpenStack 연동 대상을 새로운 리소스 종류로 정의하는 데 사용됩니다. 사용자는 CRD를 통해 추가된"
+" 사용자 정의 리소스(Custom Resource)에 원하는 상태를 선언합니다."
+msgstr ""
+
+#: ../../source/foundations/kubernetes-fundamentals.rst:67
+msgid ""
+"이 연동 구조에서 컨트롤러나 :term:`오퍼레이터(Operator) <operator>` 는 사용자 정의 리소스를 감시하고, "
+"OpenStack API를 호출하여 선언된 상태가 실제 인프라에 반영되도록 조정합니다. CRD 자체가 OpenStack API를 "
+"호출하는 것이 아니라, 해당 리소스의 수명주기 관리 로직을 가진 컨트롤러나 오퍼레이터가 상태 조정을 수행합니다."
+msgstr ""
+
+#: ../../source/foundations/kubernetes-fundamentals.rst:81
+msgid "대표 사례"
+msgstr ""
+
+#: ../../source/foundations/kubernetes-fundamentals.rst:83
+msgid "이 패턴을 OpenStack 연동에 적용한 대표 사례는 다음과 같습니다. 전체 연동 구조에서는 다음 영역에 해당합니다."
+msgstr ""
+
+#: ../../source/foundations/kubernetes-fundamentals.rst:86
+msgid ""
+"**Magnum과 Cluster API(CAPI)·Cluster API Provider OpenStack(CAPO)** — "
+":ref:`배포·프로비저닝 <bridging-concepts-provisioning>`"
+msgstr ""
+
+#: ../../source/foundations/kubernetes-fundamentals.rst:88
+msgid "**Metal3와 Ironic** — :ref:`베어메탈 (물리 서버) <bridging-concepts-baremetal>`"
+msgstr ""
+
+#: ../../source/foundations/kubernetes-fundamentals.rst:93
+msgid "Magnum CAPI 드라이버와 CAPO"
+msgstr ""
+
+#: ../../source/foundations/kubernetes-fundamentals.rst:95
+msgid ""
+"Magnum의 CAPI 기반 드라이버는 CAPI와 CAPO의 사용자 정의 리소스를 생성하고, CAPO 컨트롤러는 OpenStack "
+"API를 호출하여 Nova·Neutron 등의 인프라를 조정합니다."
+msgstr ""
+
+#: ../../source/foundations/kubernetes-fundamentals.rst:107
+msgid ""
+"이 대응 관계를 알면 Magnum API로 받은 클러스터 생성 요청이 CAPI 리소스로 변환되는 단계와 CAPO가 실제 "
+"OpenStack 인프라를 조정하는 역할을 구분할 수 있습니다."
+msgstr ""
+
+#: ../../source/foundations/kubernetes-fundamentals.rst:111
+msgid ""
+"자세한 내용은 :doc:`../kubernetes-on-openstack/magnum` 과 :doc:`../kubernetes-"
+"on-openstack/cluster-api` 를 참고합니다."
+msgstr ""
+
+#: ../../source/foundations/kubernetes-fundamentals.rst:118
+msgid "Metal3와 Ironic"
+msgstr ""
+
+#: ../../source/foundations/kubernetes-fundamentals.rst:120
+msgid ""
+":term:`Metal3` 는 ``BareMetalHost`` 리소스를 CRD로 제공합니다. ``BareMetalHost`` 는 "
+"OpenStack :term:`Ironic` 이 관리하는 물리 서버의 원하는 상태를 표현합니다."
+msgstr ""
+
+#: ../../source/foundations/kubernetes-fundamentals.rst:124
+msgid ""
+"Metal3의 Bare Metal Operator(BMO)는 Kubernetes 컨트롤러로서 ``BareMetalHost`` 를 "
+"감시하고 Ironic API를 호출하여 물리 서버의 검사와 프로비저닝을 조정합니다."
+msgstr ""
+
+#: ../../source/foundations/kubernetes-fundamentals.rst:132
+msgid ""
+"이 대응 관계를 알면 Kubernetes에 선언된 물리 서버의 상태와 Ironic이 수행하는 실제 하드웨어 작업의 경계를 구분할 수"
+" 있습니다."
+msgstr ""
+
+#: ../../source/foundations/kubernetes-fundamentals.rst:138
+msgid ""
+"`Kubernetes 객체 공식 문서 <https://kubernetes.io/docs/concepts/overview"
+"/working-with-objects/>`_"
+msgstr ""
+
+#: ../../source/foundations/kubernetes-fundamentals.rst:140
+msgid ""
+"`컨트롤러 공식 문서 "
+"<https://kubernetes.io/docs/concepts/architecture/controller/>`_"
+msgstr ""
+
+#: ../../source/foundations/kubernetes-fundamentals.rst:142
+msgid ""
+"`Custom Resources 공식 문서 <https://kubernetes.io/docs/concepts/extend-"
+"kubernetes/api-extension/custom-resources/>`_"
+msgstr ""
+
+#: ../../source/foundations/kubernetes-fundamentals.rst:144
+msgid ""
+"`Operator 패턴 공식 문서 <https://kubernetes.io/docs/concepts/extend-"
+"kubernetes/operator/>`_"
 msgstr ""
 
 #: ../../source/foundations/openstack.rst:3
@@ -6730,5 +6830,14 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "VM/이미지/네트워크 조회 등 기본 ``openstack`` CLI 예시 보강."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "CRD / Operator → Magnum 드라이버, "
+#~ "Metal3 ``BareMetalHost`` 등 통합 프로젝트의 기반"
+#~ " (:doc:`bridging-concepts`)"
+#~ msgstr ""
+
+#~ msgid "Kubernetes 공식 개념 문서(kubernetes.io/docs/concepts) 링크."
 #~ msgstr ""
 
